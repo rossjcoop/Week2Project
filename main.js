@@ -8,7 +8,7 @@ console.log(data);
 
 // 1: Show me how to calculate the average price of all items.
 function question1() {
-	
+  
 
 
 
@@ -16,13 +16,13 @@ function question1() {
   let sum = 0
 
   for(let i = 0; i < data.length; i++){
-  	sum += data[i].price
-	// totalprices.push(data.price)
+    sum += data[i].price
+  // totalprices.push(data.price)
     //avgprice = (sum / 3)
   }
 
   let avg = sum / data.length
-	return avg.toFixed(2)
+  return avg.toFixed(2)
 }
 console.log(question1())
 
@@ -46,10 +46,10 @@ function question3() {
   // Answer:
   
   for(let i = 0; i < data.length; i++){
-  	let name_price_gbp = []
+    let name_price_gbp = []
     if(data[i].currency_code === "GBP"){
-	return data[i].title + " " + "$" + data[i].price	
-	}
+  return data[i].title + " " + "$" + data[i].price  
+  }
   }
 }
 console.log(question3())
@@ -57,16 +57,15 @@ console.log(question3())
 // 4: Display a list of all items who are made of wood.
 function question4() {
   // Answer:
-  woodproducts = 0
+  woodproducts = []
   for(i = 0; i < data.length; i++){
-  	for(j = 0; j < data[i].length; j++){
+    if(data[i].materials.includes("wood")){
+    woodproducts.push(data[i].title)
+  }
+  }
+  return woodproducts
+}
 
-  	if(data[j].materials === "wood"){
-  	return data[i].title
-  }
-  }
-}
-}
 console.log(question4())
 
 // 5: Which items are made of eight or more materials? 
@@ -77,14 +76,13 @@ function question5() {
   
   //let eightormore = []
 
-  //for(i = 0; i < data.length; i++){
-	data.forEach(function(item){
+  for(i = 0; i < data.length; i++){
+  //data.forEach(function(item){
 
-  		if(item.materials.length >= 8){
- 
-  		return item.title + " " + "is made with" + " " + item.materials.length + " " + "materials" + " " + item.materials
-  	}  
-  })
+      if(data[i].materials[i].length >= 8){
+      return data[i].title + " " + "is made with" + " " + data[i].materials[i].length + " " + "materials" + " " + "including:" + " " + data[i].materials
+    }  
+  }
 }
 console.log(question5())
 
@@ -92,10 +90,12 @@ console.log(question5())
 // Answer:
 function question6() {
   // Answer:
-  let totalquantity = 0
+  let totalitems = []
   for(let i = 0; i < data.length; i++){
-    totalquantity += data[i].quantity
+    if(data[i].who_made === "i_did"){
+      totalitems.push(data[i].title)
+    }
   }
-  return totalquantity
+  return totalitems
 }
 console.log(question6())
